@@ -10,10 +10,10 @@
         android:icon="@android:drawable/presence_online"
         android:title="chked"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/sync1"
-        android:title="sync"
-        app:showAsAction="ifRoom" />
+    <!--<item-->
+        <!--android:id="@+id/sync1"-->
+        <!--android:title="sync"-->
+        <!--app:showAsAction="ifRoom" />-->
     <item
         android:id="@+id/syncFull"
         android:title="syncFull"

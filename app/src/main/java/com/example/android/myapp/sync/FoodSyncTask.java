@@ -17,12 +17,20 @@ import com.example.android.myapp.AppExecutors;
 import com.example.android.myapp.R;
 import com.example.android.myapp.database.AppDB;
 import com.example.android.myapp.database.Dish;
+import com.example.android.myapp.network.RemService;
+import com.example.android.myapp.remote.APIUtils;
+import com.example.android.myapp.remote.DishCSClass;
 import com.example.android.myapp.utilities.NetworkUtils;
 import com.example.android.myapp.utilities.jsonutils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FoodSyncTask extends Activity {
 
@@ -106,30 +114,41 @@ public class FoodSyncTask extends Activity {
         }
     }
 
-    synchronized public static void clean(final AppDB mDb) {
+
+
+
+    synchronized public static void syncWeatherfullv2(final AppDB mDb,List<DishCSClass> response) {
+       // RemService userService = APIUtils.getUserService();
+
+
+//        Call<List<DishCSClass>> call = userService.getcsdishes();
+//        call.enqueue(new Callback<List<DishCSClass>>() {
+//            @Override
+//            public void onResponse(Call<List<DishCSClass>> call, Response<List<DishCSClass>> response) {
+//                if(response.isSuccessful()){
+        Log.d( "fddffdf882122121", "Updating list of tasks from LiveData in ViewModel" );
+
+                    mService.insertallv2(mDb,response);
+//
+//    }}
+//
+//            @Override
+//            public void onFailure(Call<List<DishCSClass>> call, Throwable t) {
+//
+//            }
+//        });
+}
+
+
+
+
+            synchronized public static void clean(final AppDB mDb) {
 
 
         try {
-        /*
-        URL weatherRequestUrl = NetworkUtils.getUrl(context);
-
-            /* Use the URL to retrieve the JSON */
-          /*  URL weatherRequestUrl = NetworkUtils.buildUrlfullsync();
-            String jsonWeatherResponse = NetworkUtils.getResponseFromHttpUrl(weatherRequestUrl);
-
-            *//* Parse the JSON into a list of weather values *//*
-            final Map[] weatherValues = jsonutils.getWeatherContentValuesFromJsonfull( jsonWeatherResponse);*/
 
             mService.cleanAll(mDb);
-            //String description = mEditText.getText().toString();
-            //int priority = getPriorityFromViews();
-            // Date date = new Date();
 
-            //final Dish task = new Dish(description );
-
-
-
-            //   mTaskId = DEFAULT_TASK_ID;
 
 
         } catch (Exception e) {
@@ -191,3 +210,4 @@ public class FoodSyncTask extends Activity {
         }
     };
 }
+

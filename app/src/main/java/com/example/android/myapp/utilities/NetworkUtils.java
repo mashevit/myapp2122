@@ -65,7 +65,7 @@ public final class NetworkUtils {
 
 
 
-    private final static String MYURL="http://aaa-projm.7e14.starter-us-west-2.openshiftapps.com/rest/dish";
+    private final static String MYURL=/*"192.168.0.238/rest/dish";//*/"http://aaa-projm.7e14.starter-us-west-2.openshiftapps.com/rest/dish";
     /**
      * Retrieves the proper URL to query for the weather data. The reason for both this method as
      * well as {@link #buildUrlWithLocationQuery(String)} is two fold.

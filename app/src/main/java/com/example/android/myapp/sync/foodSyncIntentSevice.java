@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 
 import com.example.android.myapp.database.AppDB;
+import com.example.android.myapp.remote.DishCSClass;
+
+import java.util.List;
 
 public class foodSyncIntentSevice extends IntentService {
     /**
@@ -12,6 +15,7 @@ public class foodSyncIntentSevice extends IntentService {
      *
      * @param name Used to name the worker thread, important only for debugging.
      */
+    public static final String EXTRA_DATA_ID_Obj="ljjhjhqqsqqqw";
     public static final String EXTRA_DATA_ID="ljjhjhqq";
    // private AppDB mDb;
     public foodSyncIntentSevice(String name) {
@@ -34,7 +38,8 @@ public class foodSyncIntentSevice extends IntentService {
               FoodSyncTask.syncWeather(this,mdb);
             todohere="";
         }else if(todohere.equals("full")){
-            FoodSyncTask.syncWeatherfull(mdb);
+            List<DishCSClass> a= (List<DishCSClass>) intent.getSerializableExtra(EXTRA_DATA_ID_Obj);
+            FoodSyncTask.syncWeatherfullv2(mdb,a);
             todohere="";
         }else if(todohere.equals("clean")){
         FoodSyncTask.clean(mdb);
